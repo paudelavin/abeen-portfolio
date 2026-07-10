@@ -1,0 +1,91 @@
+import { experience, education, skills, profile } from "@/lib/resume-data";
+import { TicketLabel } from "@/components/TicketLabel";
+import { Reveal } from "@/components/Reveal";
+
+export const metadata = { title: "Resume — Abeen Poudel" };
+
+export default function ResumePage() {
+  return (
+    <div className="max-w-5xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <TicketLabel id="POUDEL-03" status="done" />
+          <h1 className="font-display text-3xl sm:text-4xl text-paper mt-4">Resume</h1>
+          <p className="text-ink-400 mt-2">{profile.location} · {profile.phone}</p>
+        </div>
+        <a
+          href="/resume.pdf"
+          className="font-mono text-xs uppercase tracking-wider border border-ink-600 text-paper px-4 py-2.5 rounded hover:border-amber hover:text-amber transition-colors"
+        >
+          Download PDF
+        </a>
+      </div>
+
+      {/* Experience */}
+      <section className="mt-14">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
+          Experience
+        </h2>
+        <div className="flex flex-col gap-6">
+          {experience.map((role, index) => (
+            <Reveal key={role.id} delay={index * 80}>
+            <div
+              className="border border-ink-600/70 rounded-lg p-5 sm:p-6 bg-ink-600/20 card-hover"
+            >
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <TicketLabel id={role.id} status={role.status} />
+                <span className="font-mono text-xs text-ink-400">{role.period}</span>
+              </div>
+              <h3 className="font-display text-xl text-paper">{role.title}</h3>
+              <p className="font-mono text-sm text-amber mt-0.5">
+                {role.company} · {role.location}
+              </p>
+              {role.points.length > 0 && (
+                <ul className="mt-4 space-y-2">
+                  {role.points.map((point, i) => (
+                    <li key={i} className="text-ink-400 text-sm leading-relaxed flex gap-2">
+                      <span className="text-teal shrink-0">—</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+             )}
+            </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Education */}
+      <section className="mt-14">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
+          Education
+        </h2>
+        {education.map((edu) => (
+          <div key={edu.school} className="border-l-2 border-teal pl-5">
+            <h3 className="font-display text-lg text-paper">{edu.school}</h3>
+            <p className="text-ink-400 text-sm mt-1">{edu.degree}</p>
+            <p className="font-mono text-xs text-ink-400 mt-1">{edu.period}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* Skills */}
+      <section className="mt-14">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
+          Skills
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((s) => (
+            <span
+              key={s}
+              className="font-mono text-[11px] text-paper bg-ink-600/50 border border-ink-600 rounded px-2.5 py-1"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
