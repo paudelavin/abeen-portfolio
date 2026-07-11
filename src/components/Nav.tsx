@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { href: "/", label: "About" },
@@ -15,18 +18,21 @@ export function Nav() {
         <Link href="/" className="font-display text-lg text-paper tracking-tight">
           Abeen Poudel
         </Link>
-        <ul className="flex items-center gap-1 sm:gap-2">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="nav-link font-mono text-[11px] sm:text-xs uppercase tracking-wider text-ink-400 hover:text-amber transition-colors px-2 sm:px-3 py-1.5 rounded hover:bg-ink-600/50"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-1 sm:gap-2">
+          <ul className="flex items-center gap-1 sm:gap-2">
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="nav-link font-mono text-[11px] sm:text-xs uppercase tracking-wider text-ink-400 hover:text-amber transition-colors px-2 sm:px-3 py-1.5 rounded hover:bg-ink-600/50"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   );

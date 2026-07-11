@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-bg: 21 26 35;      /* dark navy page background */
+  --color-paper: 243 245 247; /* near-white text */
+}
+
+html.light {
+  --color-bg: 243 245 247;   /* light page background */
+  --color-paper: 21 26 35;   /* dark text */
+}
+
 ::selection {
   background-color: #e8a93a;
   color: #151a23;
@@ -12,18 +22,19 @@ html {
 }
 
 body {
-  background-color: #151a23;
+  background-color: rgb(var(--color-bg));
   background-image:
     radial-gradient(circle at 15% 0%, rgba(232, 169, 58, 0.07), transparent 45%),
     radial-gradient(circle at 85% 20%, rgba(47, 143, 122, 0.08), transparent 40%);
+  transition: background-color 0.2s ease;
 }
 
 .prose-post {
-  color: #d7dce3;
+  color: rgb(var(--color-paper) / 0.85);
 }
 .prose-post h1, .prose-post h2, .prose-post h3 {
   font-family: var(--font-display);
-  color: #f3f5f7;
+  color: rgb(var(--color-paper));
   margin-top: 1.75em;
   margin-bottom: 0.6em;
 }
@@ -43,14 +54,14 @@ body {
   margin-bottom: 0.4em;
 }
 .prose-post code {
-  background: #1e2531;
+  background: rgb(var(--color-bg) / 0.4);
   padding: 0.15em 0.4em;
   border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 0.9em;
 }
 .prose-post pre {
-  background: #1e2531;
+  background: rgb(var(--color-bg) / 0.4);
   padding: 1em;
   border-radius: 8px;
   overflow-x: auto;
@@ -59,10 +70,9 @@ body {
 .prose-post blockquote {
   border-left: 3px solid #e8a93a;
   padding-left: 1em;
-  color: #a9b1bd;
+  color: rgb(var(--color-paper) / 0.65);
   font-style: italic;
 }
-
 
 /* Page fade-in transition */
 .page-fade-in {
@@ -92,16 +102,6 @@ body {
   transform: translateY(0);
 }
 
-/* Respect reduced motion everywhere */
-@media (prefers-reduced-motion: reduce) {
-  .page-fade-in, .reveal {
-    animation: none !important;
-    transition: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  
-}
 /* Card hover lift + glow */
 .card-hover {
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
@@ -130,4 +130,25 @@ body {
 }
 .nav-link:hover::after {
   transform: scaleX(1);
+}
+
+/* Hover lift for buttons and cards */
+a, button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+a:hover, button:hover {
+  transform: translateY(-2px);
+}
+a:active, button:active {
+  transform: translateY(0px);
+}
+
+/* Respect reduced motion everywhere */
+@media (prefers-reduced-motion: reduce) {
+  .page-fade-in, .reveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

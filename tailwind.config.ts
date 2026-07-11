@@ -6,14 +6,14 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#151A23",
+          DEFAULT: "rgb(var(--color-bg) / <alpha-value>)",
           50: "#F4F6F8",
           100: "#E4E8EC",
           400: "#5A6472",
           600: "#333B47",
           900: "#151A23",
         },
-        paper: "#F3F5F7",
+        paper: "rgb(var(--color-paper) / <alpha-value>)",
         amber: {
           DEFAULT: "#E8A93A",
           600: "#C88A1F",
