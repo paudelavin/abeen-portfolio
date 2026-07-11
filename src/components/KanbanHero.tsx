@@ -6,8 +6,7 @@ const columns: { name: string; accent: string; cards: Card[] }[] = [
     accent: "border-t-backlog",
     cards: [
       { id: "POUDEL-11", title: "Scale product ops at Maatri Nepal", sub: "Next up" },
-{ id: "POUDEL-12", title: "Earn ICP-ACC (Agile Coaching)", sub: "Up next" },
-{ id: "POUDEL-13", title: "Earn PMP® Certification", sub: "Roadmap" },
+      { id: "POUDEL-13", title: "Earn PMP® Certification", sub: "Roadmap" },
     ],
   },
   {
@@ -15,6 +14,7 @@ const columns: { name: string; accent: string; cards: Card[] }[] = [
     accent: "border-t-amber",
     cards: [
       { id: "POUDEL-08", title: "Product Project Manager", sub: "Maatri Nepal · since Oct 2025" },
+      { id: "POUDEL-12", title: "Preparing for ICP-ACC (Agile Coaching)", sub: "Exam upcoming" },
     ],
   },
   {
