@@ -14,7 +14,7 @@ export default function ResumePage() {
           <h1 className="font-display text-3xl sm:text-4xl text-paper mt-4">Resume</h1>
           <p className="text-ink-400 mt-2">{profile.location} · {profile.phone}</p>
         </div>
-        
+        <a
           href="/resume.pdf"
           className="font-mono text-xs uppercase tracking-wider border border-ink-600 text-paper px-4 py-2.5 rounded hover:border-amber hover:text-amber transition-colors"
         >
@@ -22,7 +22,6 @@ export default function ResumePage() {
         </a>
       </div>
 
-      {/* Experience */}
       <section className="mt-14">
         <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
           Experience
@@ -56,7 +55,6 @@ export default function ResumePage() {
         </div>
       </section>
 
-      {/* Education */}
       <section className="mt-14">
         <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
           Education
@@ -70,7 +68,6 @@ export default function ResumePage() {
         ))}
       </section>
 
-      {/* Skills */}
       <section className="mt-14">
         <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
           Skills
@@ -82,7 +79,6 @@ export default function ResumePage() {
         </div>
       </section>
 
-      {/* Certifications */}
       <section className="mt-14">
         <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
           Certifications
