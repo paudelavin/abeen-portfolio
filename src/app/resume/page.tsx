@@ -80,7 +80,7 @@ export default function ResumePage() {
           {skills.map((s) => (
             <SkillBar key={s.name} name={s.name} level={s.level} />
           ))}
-        </div>>
+        </div>
       </section>
     </div>
   );
