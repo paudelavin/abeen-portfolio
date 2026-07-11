@@ -3,6 +3,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { prisma } from "@/lib/db";
 import { TicketLabel } from "@/components/TicketLabel";
+import { LikeButton } from "@/components/LikeButton";
+import { CommentsSection } from "@/components/CommentsSection";
 
 export const dynamic = "force-dynamic";
 
@@ -29,9 +31,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           day: "numeric",
         })}
       </p>
-      <div className="prose-post mt-10">
+     <div className="prose-post mt-10">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
+      <div className="mt-10">
+        <LikeButton postId={post.id} />
+      </div>
+      <CommentsSection postId={post.id} />
     </article>
   );
 }

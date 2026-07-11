@@ -18,6 +18,7 @@ export function AdminNav() {
   const links = [
     { href: "/admin", label: "Dashboard" },
     { href: "/admin/posts", label: "Posts" },
+    { href: "/admin/comments", label: "Comments" },
     { href: "/admin/messages", label: "Messages" },
   ];
 
