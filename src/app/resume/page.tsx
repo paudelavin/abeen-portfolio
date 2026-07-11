@@ -1,6 +1,7 @@
 import { experience, education, skills, profile } from "@/lib/resume-data";
 import { TicketLabel } from "@/components/TicketLabel";
 import { Reveal } from "@/components/Reveal";
+import { SkillBar } from "@/components/SkillBar";
 
 export const metadata = { title: "Resume — Abeen Poudel" };
 
@@ -75,16 +76,11 @@ export default function ResumePage() {
         <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
           Skills
         </h2>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-4">
           {skills.map((s) => (
-            <span
-              key={s}
-              className="font-mono text-[11px] text-paper bg-ink-600/50 border border-ink-600 rounded px-2.5 py-1"
-            >
-              {s}
-            </span>
+            <SkillBar key={s.name} name={s.name} level={s.level} />
           ))}
-        </div>
+        </div>>
       </section>
     </div>
   );

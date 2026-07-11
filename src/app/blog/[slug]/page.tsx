@@ -5,6 +5,7 @@ import { prisma } from "@/lib/db";
 import { TicketLabel } from "@/components/TicketLabel";
 import { LikeButton } from "@/components/LikeButton";
 import { CommentsSection } from "@/components/CommentsSection";
+import { ShareButtons } from "@/components/ShareButtons";
 
 export const dynamic = "force-dynamic";
 
@@ -34,8 +35,12 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
      <div className="prose-post mt-10">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
-      <div className="mt-10">
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
         <LikeButton postId={post.id} />
+        <ShareButtons
+          title={post.title}
+          url={`https://abeenpoudel.com.np/blog/${post.slug}`}
+        />
       </div>
       <CommentsSection postId={post.id} />
     </article>

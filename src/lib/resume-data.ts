@@ -12,19 +12,19 @@ export const profile = {
 };
 
 export const skills = [
-  "Product Management",
-  "Agile / Scrum Facilitation",
-  "Backlog Management & Refinement",
-  "Sprint Planning & Retrospectives",
-  "Requirement Gathering (BRD, SRS, User Stories)",
-  "Stakeholder & Vendor Management",
-  "UAT Coordination",
-  "Agile Metrics (Velocity, Burndown, Capacity)",
-  "Jira & Confluence",
-  "Trello",
-  "System Architecture",
-  "Network Engineering",
-  "Telecommunications",
+  { name: "Agile / Scrum Facilitation", level: 95 },
+  { name: "Product Management", level: 90 },
+  { name: "Sprint Planning & Retrospectives", level: 90 },
+  { name: "Backlog Management & Refinement", level: 88 },
+  { name: "Jira & Confluence", level: 88 },
+  { name: "Requirement Gathering (BRD, SRS, User Stories)", level: 92 },
+  { name: "Stakeholder & Vendor Management", level: 94 },
+  { name: "Agile Metrics (Velocity, Burndown, Capacity)", level: 82 },
+  { name: "UAT Coordination", level: 80 },
+  { name: "Trello", level: 78 },
+  { name: "System Architecture", level: 65 },
+  { name: "Network Engineering", level: 55 },
+  { name: "Telecommunications", level: 60 },
 ];
 
 export const certifications = [

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { KanbanHero } from "@/components/KanbanHero";
 import { TicketLabel } from "@/components/TicketLabel";
 import { Reveal } from "@/components/Reveal";
+import { SkillBar } from "@/components/SkillBar";
 
 export default function HomePage() {
   return (
@@ -69,14 +70,9 @@ export default function HomePage() {
             <h3 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-4">
               Skills
             </h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((s) => (
-                <span
-                  key={s}
-                  className="font-mono text-[11px] text-paper bg-ink-600/50 border border-ink-600 rounded px-2.5 py-1"
-                >
-                  {s}
-                </span>
+            <div className="flex flex-col gap-3">
+              {skills.slice(0, 8).map((s) => (
+                <SkillBar key={s.name} name={s.name} level={s.level} />
               ))}
             </div>
           </div>
