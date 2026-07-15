@@ -9,7 +9,6 @@ import { CertBadge } from "@/components/CertBadge";
 export default function HomePage() {
   return (
     <div className="max-w-5xl mx-auto px-5 sm:px-8">
-      {/* Hero: looks like an open ticket */}
       <section className="pt-14 sm:pt-20 pb-12">
         <TicketLabel id="POUDEL-01" status="in-progress" />
         <h1 className="font-display text-4xl sm:text-6xl text-paper mt-5 leading-[1.05] tracking-tight">
@@ -35,12 +34,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Signature: kanban board of the career */}
       <section className="pb-16">
         <KanbanHero />
       </section>
 
-      {/* Summary */}
       <Reveal>
         <section className="pb-16 border-t border-ink-600/60 pt-12">
           <TicketLabel id="POUDEL-02" status="done" />
@@ -49,7 +46,6 @@ export default function HomePage() {
         </section>
       </Reveal>
 
-      {/* Skills */}
       <Reveal>
         <section className="pb-12">
           <h3 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
@@ -63,15 +59,17 @@ export default function HomePage() {
         </section>
       </Reveal>
 
-      {/* Certifications */}
       <Reveal>
         <section className="pb-20">
           <h3 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
             Certifications
           </h3>
+          <p className="font-mono text-[11px] text-ink-400 mb-4">
+            Click any certification to view it
+          </p>
           <div className="grid sm:grid-cols-2 gap-3">
             {certifications.map((c) => (
-              <CertBadge key={c} name={c} />
+              <CertBadge key={c.name} name={c.name} file={c.file} />
             ))}
           </div>
         </section>

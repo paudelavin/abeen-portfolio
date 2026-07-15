@@ -14,7 +14,7 @@ export default function ResumePage() {
           <h1 className="font-display text-3xl sm:text-4xl text-paper mt-4">Resume</h1>
           <p className="text-ink-400 mt-2">{profile.location} · {profile.phone}</p>
         </div>
-        <a
+        
           href="/resume.pdf"
           className="font-mono text-xs uppercase tracking-wider border border-ink-600 text-paper px-4 py-2.5 rounded hover:border-amber hover:text-amber transition-colors"
         >
@@ -83,9 +83,12 @@ export default function ResumePage() {
         <h2 className="font-mono text-xs uppercase tracking-widest text-ink-400 mb-6">
           Certifications
         </h2>
+        <p className="font-mono text-[11px] text-ink-400 mb-4">
+          Click any certification to view it
+        </p>
         <div className="grid sm:grid-cols-2 gap-3">
           {certifications.map((c) => (
-            <CertBadge key={c} name={c} />
+            <CertBadge key={c.name} name={c.name} file={c.file} />
           ))}
         </div>
       </section>
