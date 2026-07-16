@@ -152,3 +152,35 @@ a:active, button:active {
     transform: none !important;
   }
 }
+/* Now page illustration animations */
+@keyframes nowFloat1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes nowFloat2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+@keyframes nowFloat3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes nowBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.08); }
+}
+@keyframes nowPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.now-float-1 { animation: nowFloat1 3s ease-in-out infinite; }
+.now-float-2 { animation: nowFloat2 3.4s ease-in-out infinite; }
+.now-float-3 { animation: nowFloat3 2.8s ease-in-out infinite; }
+.now-bounce { animation: nowBounce 2.2s ease-in-out infinite; }
+.now-pulse { animation: nowPulse 2.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .now-float-1, .now-float-2, .now-float-3, .now-bounce, .now-pulse {
+    animation: none;
+  }
+}

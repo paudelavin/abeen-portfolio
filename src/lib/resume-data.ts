@@ -243,3 +243,29 @@ export const caseStudies: CaseStudy[] = [
       "This was where I learned the difference between running Scrum and actually serving the team through it. The ceremonies themselves were never the point — they were only valuable to the extent they surfaced real problems and led to real follow-through. Becoming a servant leader meant taking personal responsibility for closing the loop on impediments, instead of treating 'I raised it in stand-up' as the end of my job.",
   },
 ];
+
+export const nowUpdates = {
+  lastUpdated: "July 2026",
+  items: [
+    {
+      label: "Working on",
+      text: "Leading product and project management at Maatri Nepal, bringing Agile discipline to a growing team.",
+      illustration: "working" as const,
+    },
+    {
+      label: "Studying for",
+      text: "ICP-ACC (Agile Coaching certification) — next milestone on the path toward deeper Agile coaching work.",
+      illustration: "studying" as const,
+    },
+    {
+      label: "Reading / learning",
+      text: "Exploring how AI tools are reshaping Agile facilitation and product management workflows.",
+      illustration: "learning" as const,
+    },
+    {
+      label: "Writing about",
+      text: "Real-world lessons from Scrum Mastering, product management, and IT project delivery in Nepal — see the Blog.",
+      illustration: "writing" as const,
+    },
+  ],
+};
