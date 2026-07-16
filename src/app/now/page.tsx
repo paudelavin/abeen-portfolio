@@ -30,18 +30,6 @@ export default function NowPage() {
         ))}
       </div>
 
-      <p className="font-mono text-[11px] text-ink-400 mt-10">
-        Inspired by{" "}
-        <a
-          href="https://nownownow.com"
-          target="_blank"
-          rel="noreferrer"
-          className="text-amber hover:underline"
-        >
-          nownownow.com
-        </a>
-        .
-      </p>
     </div>
   );
 }
