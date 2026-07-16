@@ -47,7 +47,18 @@ export default function ContactPage() {
       </p>
 
       {status === "sent" ? (
-        <div className="mt-10 border border-teal/40 rounded-lg p-6 bg-teal/10">
+        <div className="mt-10 border border-teal/40 rounded-lg p-8 bg-teal/10 flex flex-col items-center text-center">
+          <div className="bouncy-pop w-16 h-16 rounded-full bg-teal/20 flex items-center justify-center mb-4">
+            <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none">
+              <path
+                d="M5 13l4 4L19 7"
+                stroke="#2F8F7A"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
           <p className="font-mono text-xs text-teal uppercase tracking-widest">Done</p>
           <p className="text-paper mt-2">
             Thanks for reaching out — your message has been received and I&apos;ll reply soon.
@@ -87,9 +98,7 @@ export default function ContactPage() {
               className="w-full bg-ink-600/30 border border-ink-600 rounded px-4 py-3 text-paper focus:outline-none focus:border-amber transition-colors resize-none"
             />
           </div>
-          {status === "error" && (
-            <p className="text-sm text-red-400 font-mono">{error}</p>
-          )}
+          {status === "error" && <p className="text-sm text-red-400 font-mono">{error}</p>}
           <button
             type="submit"
             disabled={status === "sending"}

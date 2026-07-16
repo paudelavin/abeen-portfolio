@@ -2,6 +2,7 @@ import { experience, education, skills, certifications, profile } from "@/lib/re
 import { TicketLabel } from "@/components/TicketLabel";
 import { SkillBar } from "@/components/SkillBar";
 import { CertBadge } from "@/components/CertBadge";
+import { TiltCard } from "@/components/TiltCard";
 
 export const metadata = { title: "Resume — Abeen Poudel" };
 
@@ -28,10 +29,7 @@ export default function ResumePage() {
         </h2>
         <div className="flex flex-col gap-6">
           {experience.map((role) => (
-            <div
-              key={role.id}
-              className="border border-ink-600/70 rounded-lg p-5 sm:p-6 bg-ink-600/20 card-hover"
-            >
+            <TiltCard key={role.id} className="border border-ink-600/70 rounded-lg p-5 sm:p-6 bg-ink-600/20">
               <div className="flex flex-wrap items-center gap-3 mb-2">
                 <TicketLabel id={role.id} status={role.status} />
                 <span className="font-mono text-xs text-ink-400">{role.period}</span>
@@ -50,7 +48,7 @@ export default function ResumePage() {
                   ))}
                 </ul>
               )}
-            </div>
+            </TiltCard>
           ))}
         </div>
       </section>

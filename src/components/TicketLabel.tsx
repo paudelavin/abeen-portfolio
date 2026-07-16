@@ -17,7 +17,7 @@ export function TicketLabel({
   };
   return (
     <span
-      className={`inline-flex items-center gap-2 font-mono text-[11px] tracking-wider border rounded px-2 py-0.5 ${colors[status]}`}
+      className={`ticket-stamp inline-flex items-center gap-2 font-mono text-[11px] tracking-wider border rounded px-2 py-0.5 ${colors[status]}`}
     >
       <span>{id}</span>
       <span className="opacity-50">·</span>

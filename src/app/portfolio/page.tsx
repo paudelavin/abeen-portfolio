@@ -2,6 +2,7 @@ import Link from "next/link";
 import { caseStudies } from "@/lib/resume-data";
 import { TicketLabel } from "@/components/TicketLabel";
 import { Reveal } from "@/components/Reveal";
+import { TiltCard } from "@/components/TiltCard";
 
 export const metadata = { title: "Portfolio — Abeen Poudel" };
 
@@ -19,18 +20,20 @@ export default function PortfolioPage() {
       <div className="grid sm:grid-cols-2 gap-6 mt-12">
         {caseStudies.map((cs, index) => (
           <Reveal key={cs.id} delay={index * 80}>
-            <Link
-              href={`/portfolio/${cs.slug}`}
-              className="border border-ink-600/70 rounded-lg p-6 bg-ink-600/20 flex flex-col card-hover h-full"
-            >
-              <TicketLabel id={cs.id} status="done" />
-              <h2 className="font-display text-xl text-paper mt-4">{cs.title}</h2>
-              <p className="font-mono text-xs text-amber mt-1">{cs.tag}</p>
-              <p className="text-ink-400 text-sm mt-4 leading-relaxed flex-1">{cs.summary}</p>
-              <span className="font-mono text-xs text-amber mt-5 inline-block">
-                Read full case study →
-              </span>
-            </Link>
+            <TiltCard className="h-full">
+              <Link
+                href={`/portfolio/${cs.slug}`}
+                className="border border-ink-600/70 rounded-lg p-6 bg-ink-600/20 flex flex-col h-full"
+              >
+                <TicketLabel id={cs.id} status="done" />
+                <h2 className="font-display text-xl text-paper mt-4">{cs.title}</h2>
+                <p className="font-mono text-xs text-amber mt-1">{cs.tag}</p>
+                <p className="text-ink-400 text-sm mt-4 leading-relaxed flex-1">{cs.summary}</p>
+                <span className="font-mono text-xs text-amber mt-5 inline-block">
+                  Read full case study →
+                </span>
+              </Link>
+            </TiltCard>
           </Reveal>
         ))}
       </div>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { TicketLabel } from "@/components/TicketLabel";
 import { Reveal } from "@/components/Reveal";
+import { TiltCard } from "@/components/TiltCard";
 
 export const metadata = { title: "Blog — Abeen Poudel" };
 export const dynamic = "force-dynamic";
@@ -31,23 +32,25 @@ export default async function BlogPage() {
         <div className="mt-12 flex flex-col gap-5">
           {posts.map((post, index) => (
             <Reveal key={post.id} delay={index * 80}>
-            <Link
-              href={`/blog/${post.slug}`}
-              className="block border border-ink-600/70 rounded-lg p-6 bg-ink-600/20 hover:border-amber/60 transition-colors card-hover"
-            >
-              <p className="font-mono text-xs text-ink-400">
-                {new Date(post.createdAt).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              <h2 className="font-display text-2xl text-paper mt-2">{post.title}</h2>
-              <p className="text-ink-400 mt-2 leading-relaxed">{post.excerpt}</p>
-              <span className="font-mono text-xs text-amber mt-4 inline-block">
-                Read post →
-              </span>
-            </Link>
+              <TiltCard>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="block border border-ink-600/70 rounded-lg p-6 bg-ink-600/20 hover:border-amber/60 transition-colors"
+                >
+                  <p className="font-mono text-xs text-ink-400">
+                    {new Date(post.createdAt).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                  <h2 className="font-display text-2xl text-paper mt-2">{post.title}</h2>
+                  <p className="text-ink-400 mt-2 leading-relaxed">{post.excerpt}</p>
+                  <span className="font-mono text-xs text-amber mt-4 inline-block">
+                    Read post →
+                  </span>
+                </Link>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
