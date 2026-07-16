@@ -28,10 +28,10 @@ export const skills = [
 ];
 
 export const certifications = [
-  { name: "Certified ScrumMaster (CSM)", file: "/certificates/csm.jpg" },
-  { name: "Agile with Atlassian Jira", file: "/certificates/jira.jpg" },
-  { name: "PMP Certification Training Course", file: "/certificates/pmp.jpg" },
-  { name: "Agile Project Management", file: "/certificates/agile-pm.jpg" },
+  { name: "Certified ScrumMaster (CSM)", file: "/certificates/csm.pdf" },
+  { name: "Agile with Atlassian Jira", file: "/certificates/jira.pdf" },
+  { name: "PMP Certification Training Course", file: "/certificates/pmp.pdf" },
+  { name: "Agile Project Management", file: "/certificates/agile-pm.pdf" },
 ];
 
 export const education = [
