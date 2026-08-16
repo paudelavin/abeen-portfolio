@@ -15,7 +15,7 @@ function getClientId() {
 
 const CONFETTI_COLORS = ["#E8A93A", "#2F8F7A", "#8B93A3", "#F3F5F7"];
 
-export function LikeButton({ postId }: { postId: string }) {
+export function LikeButton({ postId, baseLikes = 0 }: { postId: string; baseLikes?: number }) {
   const [count, setCount] = useState<number | null>(null);
   const [liked, setLiked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -27,11 +27,11 @@ export function LikeButton({ postId }: { postId: string }) {
     fetch(`/api/likes/${postId}?clientId=${clientId}`)
       .then((res) => res.json())
       .then((data) => {
-        setCount(data.count);
+        setCount(data.count + baseLikes);
         setLiked(data.liked);
       })
-      .catch(() => setCount(0));
-  }, [postId]);
+      .catch(() => setCount(baseLikes));
+  }, [postId, baseLikes]);
 
   function burstConfetti() {
     const pieces = Array.from({ length: 14 }).map((_, i) => {
@@ -66,7 +66,7 @@ export function LikeButton({ postId }: { postId: string }) {
         body: JSON.stringify({ clientId }),
       });
       const data = await res.json();
-      setCount(data.count);
+      setCount(data.count + baseLikes);
       if (data.liked && !liked) burstConfetti();
       setLiked(data.liked);
     } finally {

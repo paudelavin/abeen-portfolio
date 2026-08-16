@@ -6,6 +6,7 @@ import { TicketLabel } from "@/components/TicketLabel";
 import { LikeButton } from "@/components/LikeButton";
 import { CommentsSection } from "@/components/CommentsSection";
 import { ShareButtons } from "@/components/ShareButtons";
+import { getFakeLikes } from "@/lib/fakeLikes";
 
 export const dynamic = "force-dynamic";
 
@@ -32,11 +33,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           day: "numeric",
         })}
       </p>
-     <div className="prose-post mt-10">
+      <div className="prose-post mt-10">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4">
-        <LikeButton postId={post.id} />
+        <LikeButton postId={post.id} baseLikes={getFakeLikes(post.id, post.createdAt)} />
         <ShareButtons
           title={post.title}
           url={`https://abeenpoudel.com.np/blog/${post.slug}`}
