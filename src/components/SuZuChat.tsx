@@ -8,7 +8,6 @@ type Message = {
   content: string;
 };
 
-// Custom SuZu Avatar SVG
 const SuZuAvatar = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2Z" fill="currentColor" fillOpacity="0.1"/>
@@ -81,7 +80,6 @@ export function SuZuChat() {
 
   return (
     <>
-      {/* Custom SuZu Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
         className={`fixed bottom-6 right-6 group z-50 transition-all duration-300 ${
@@ -89,7 +87,7 @@ export function SuZuChat() {
         }`}
       >
         <div className="absolute inset-0 bg-amber rounded-full blur-md opacity-30 group-hover:opacity-60 transition-opacity"></div>
-        <div className="relative flex items-center justify-center w-14 h-14 bg-ink-900 border border-ink-600 rounded-full shadow-xl text-amber">
+        <div className="relative flex items-center justify-center w-14 h-14 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-full shadow-xl text-amber">
           <SuZuAvatar size={28} />
           <span className="absolute -top-1 -right-1 flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
@@ -98,67 +96,66 @@ export function SuZuChat() {
         </div>
       </button>
 
-      {/* Chat Window */}
       <div
-        className={`fixed bottom-6 right-6 w-[350px] sm:w-[400px] h-[500px] bg-ink-900 border border-ink-600 rounded-xl shadow-2xl flex flex-col z-50 transition-all duration-300 origin-bottom-right ${
+        className={`fixed bottom-6 right-6 w-[350px] sm:w-[400px] h-[500px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-2xl flex flex-col z-50 transition-all duration-300 origin-bottom-right ${
           isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0 pointer-events-none"
         }`}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-ink-600 bg-ink-800 rounded-t-xl relative overflow-hidden">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-t-xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber to-teal-500"></div>
           
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-ink-900 border border-ink-600 flex items-center justify-center text-amber shadow-inner">
+            <div className="w-10 h-10 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-amber shadow-sm">
               <SuZuAvatar size={24} />
             </div>
             <div>
-              <h3 className="font-display text-paper text-base leading-tight">
+              <h3 className="font-display text-gray-900 dark:text-white text-base leading-tight">
                 SuZu
               </h3>
-              <p className="font-mono text-[10px] text-teal-400 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span> Online
+              <p className="font-mono text-[10px] text-teal-600 dark:text-teal-400 flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-teal-500 dark:bg-teal-400 animate-pulse"></span> Online
               </p>
             </div>
           </div>
-          <button onClick={() => setIsOpen(false)} className="text-ink-400 hover:text-paper transition-colors p-1 bg-ink-900/50 rounded-md hover:bg-ink-600">
+          <button onClick={() => setIsOpen(false)} className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors p-1 bg-white/50 dark:bg-gray-900/50 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700">
             <X size={18} />
           </button>
         </div>
 
-        {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4 scrollbar-thin scrollbar-thumb-ink-600 scrollbar-track-transparent">
+        <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
           {messages.map((msg, idx) => (
             <div key={idx} className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
-              <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center shadow-sm ${msg.role === "user" ? "bg-ink-600 text-paper" : "bg-ink-900 text-amber border border-ink-600"}`}>
+              <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center shadow-sm ${msg.role === "user" ? "bg-gray-800 text-white" : "bg-white dark:bg-gray-900 text-amber border border-gray-200 dark:border-gray-700"}`}>
                 {msg.role === "user" ? <User size={16} /> : <SuZuAvatar size={20} />}
               </div>
-              <div className={`px-4 py-2.5 rounded-lg text-sm max-w-[75%] whitespace-pre-wrap ${msg.role === "user" ? "bg-ink-600 text-paper rounded-tr-none" : "bg-ink-800 text-ink-100 border border-ink-600 rounded-tl-none shadow-sm"}`}>
+              <div className={`px-4 py-2.5 rounded-lg text-sm max-w-[75%] whitespace-pre-wrap ${
+                msg.role === "user" 
+                  ? "bg-gray-800 text-white rounded-tr-none" 
+                  : "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-tl-none shadow-sm"
+              }`}>
                 {msg.content}
               </div>
             </div>
           ))}
 
-          {/* Typing message */}
           {typingMessage && (
             <div className="flex gap-3 flex-row">
-              <div className="w-8 h-8 shrink-0 rounded-full flex items-center justify-center bg-ink-900 text-amber border border-ink-600">
+              <div className="w-8 h-8 shrink-0 rounded-full flex items-center justify-center bg-white dark:bg-gray-900 text-amber border border-gray-200 dark:border-gray-700">
                 <SuZuAvatar size={20} />
               </div>
-              <div className="px-4 py-2.5 rounded-lg text-sm max-w-[75%] whitespace-pre-wrap bg-ink-800 text-ink-100 border border-ink-600 rounded-tl-none shadow-sm">
+              <div className="px-4 py-2.5 rounded-lg text-sm max-w-[75%] whitespace-pre-wrap bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-tl-none shadow-sm">
                 {typingMessage}
                 <span className="inline-block w-1.5 h-3.5 ml-1 bg-amber animate-pulse align-middle"></span>
               </div>
             </div>
           )}
 
-          {/* Loading dots */}
           {isLoading && (
             <div className="flex gap-3">
-              <div className="w-8 h-8 shrink-0 rounded-full bg-ink-900 flex items-center justify-center text-amber border border-ink-600">
+              <div className="w-8 h-8 shrink-0 rounded-full bg-white dark:bg-gray-900 flex items-center justify-center text-amber border border-gray-200 dark:border-gray-700">
                 <SuZuAvatar size={20} />
               </div>
-              <div className="px-4 py-3 rounded-lg bg-ink-800 border border-ink-600 rounded-tl-none flex items-center gap-1 shadow-sm">
+              <div className="px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-tl-none flex items-center gap-1 shadow-sm">
                 <span className="w-2 h-2 bg-amber rounded-full animate-bounce [animation-delay:-0.3s]"></span>
                 <span className="w-2 h-2 bg-teal-400 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
                 <span className="w-2 h-2 bg-amber rounded-full animate-bounce"></span>
@@ -168,21 +165,20 @@ export function SuZuChat() {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* Input Area */}
-        <form onSubmit={sendMessage} className="p-3 border-t border-ink-600 bg-ink-800 rounded-b-xl">
-          <div className="flex items-center gap-2 bg-ink-900 border border-ink-600 rounded-lg px-3 py-2 focus-within:border-amber focus-within:ring-1 focus-within:ring-amber/50 transition-all">
+        <form onSubmit={sendMessage} className="p-3 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-b-xl">
+          <div className="flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 focus-within:border-amber">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask SuZu..."
-              className="flex-1 bg-transparent text-paper text-sm focus:outline-none placeholder:text-ink-400"
+              className="flex-1 bg-transparent text-gray-900 dark:text-white text-sm focus:outline-none placeholder:text-gray-400"
               disabled={isLoading || typingMessage !== ""}
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading || typingMessage !== ""}
-              className="text-amber hover:text-amber-600 disabled:opacity-50 disabled:hover:text-amber transition-colors p-1"
+              className="text-amber hover:text-amber-600 disabled:opacity-50 transition-colors p-1"
             >
               <Send size={18} />
             </button>
