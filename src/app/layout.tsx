@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
-// @ts-ignore: side-effect CSS import declaration not available in current TS config
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -22,20 +22,30 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.abeenpoudel.com.np"),
   title: "Abeen Poudel — Product Manager & Certified Scrum Master",
   description:
     "Portfolio, resume, and blog of Abeen Poudel — Computer Engineer, Certified Scrum Master, and Product Manager based in Kathmandu, Nepal.",
+  openGraph: {
+    title: "Abeen Poudel — Product Manager & Certified Scrum Master",
+    description:
+      "Portfolio, resume, and blog of Abeen Poudel — Computer Engineer, Certified Scrum Master, and Product Manager based in Kathmandu, Nepal.",
+    url: "https://www.abeenpoudel.com.np",
+    siteName: "Abeen Poudel",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="font-body min-h-screen flex flex-col">
-        <Nav/>
+        <Nav />
         <main className="flex-1 w-full">
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

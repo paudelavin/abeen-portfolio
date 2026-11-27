@@ -12,7 +12,20 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const post = await prisma.post.findUnique({ where: { slug: params.slug } });
-  return { title: post ? `${post.title} — Abeen Poudel` : "Post not found" };
+  if (!post || !post.published) return { title: "Post not found" };
+  const url = `https://www.abeenpoudel.com.np/blog/${post.slug}`;
+  return {
+    title: `${post.title} — Abeen Poudel`,
+    description: post.excerpt,
+    alternates: { canonical: url },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url,
+      type: "article",
+      publishedTime: post.createdAt.toISOString(),
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
@@ -40,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         <LikeButton postId={post.id} baseLikes={getFakeLikes(post.id, post.createdAt)} />
         <ShareButtons
           title={post.title}
-          url={`https://abeenpoudel.com.np/blog/${post.slug}`}
+          url={`https://www.abeenpoudel.com.np/blog/${post.slug}`}
         />
       </div>
       <CommentsSection postId={post.id} />
