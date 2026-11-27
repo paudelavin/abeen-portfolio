@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
+import { SuZuChat } from "@/components/SuZuChat";
 import { PageTransition } from "@/components/PageTransition";
 
 const display = Space_Grotesk({
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
+        <SuZuChat />
         <Analytics />
       </body>
     </html>
