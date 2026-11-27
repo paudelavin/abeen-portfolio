@@ -1,0 +1,1 @@
+declare module 'ask-junkie-sdk';

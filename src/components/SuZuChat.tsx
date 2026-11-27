@@ -4,15 +4,13 @@ import { useEffect } from "react";
 
 export function SuZuChat() {
   useEffect(() => {
-    // Only run this in the browser
     if (typeof window === "undefined") return;
 
-    // Dynamically import the SDK to avoid SSR issues
-    import("ask-junkie-sdk").then((module) => {
+    // We cast to 'any' to bypass strict type-checking for this JS library
+    import("ask-junkie-sdk" as any).then((module: any) => {
       const AskJunkie = module.default;
       
-      // Dynamically import the CSS
-      import("ask-junkie-sdk/dist/ask-junkie.css").catch(() => {});
+      import("ask-junkie-sdk/dist/ask-junkie.css" as any).catch(() => {});
 
       AskJunkie.init({
         apiKey: process.env.NEXT_PUBLIC_GROQ_API_KEY,
