@@ -6,6 +6,7 @@ import { TicketLabel } from "@/components/TicketLabel";
 import { LikeButton } from "@/components/LikeButton";
 import { CommentsSection } from "@/components/CommentsSection";
 import { ShareButtons } from "@/components/ShareButtons";
+import { PostViewCounter } from "@/components/PostViewCounter";
 import { getFakeLikes } from "@/lib/fakeLikes";
 
 export const dynamic = "force-dynamic";
@@ -39,13 +40,19 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     <article className="max-w-3xl mx-auto px-5 sm:px-8 py-14 sm:py-20">
       <TicketLabel id="POUDEL-05" status="done" />
       <h1 className="font-display text-3xl sm:text-4xl text-paper mt-4">{post.title}</h1>
-      <p className="font-mono text-xs text-ink-400 mt-3">
-        {new Date(post.createdAt).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-      </p>
+      
+      <div className="font-mono text-xs text-ink-400 mt-3 flex items-center gap-3">
+        <span>
+          {new Date(post.createdAt).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </span>
+        <span>•</span>
+        <PostViewCounter postId={post.id} initialViews={post.views} />
+      </div>
+
       <div className="prose-post mt-10">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>

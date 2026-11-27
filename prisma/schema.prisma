@@ -16,6 +16,7 @@ model Post {
   published Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  views     Int      @default(0)
 }
 
 model Message {
@@ -26,6 +27,7 @@ model Message {
   read      Boolean  @default(false)
   createdAt DateTime @default(now())
 }
+
 model Like {
   id        String   @id @default(cuid())
   postId    String
@@ -42,4 +44,10 @@ model Comment {
   content   String
   approved  Boolean  @default(false)
   createdAt DateTime @default(now())
+}
+
+model SiteStats {
+  id        String   @id @default("global")
+  visits    Int      @default(0)
+  updatedAt DateTime @updatedAt
 }

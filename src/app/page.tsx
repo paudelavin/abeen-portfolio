@@ -4,6 +4,7 @@ import { KanbanHero } from "@/components/KanbanHero";
 import { TicketLabel } from "@/components/TicketLabel";
 import { Reveal } from "@/components/Reveal";
 import { SkillBar } from "@/components/SkillBar";
+import { RealVisitCounter } from "@/components/RealVisitCounter";
 import { CertBadge } from "@/components/CertBadge";
 
 export default function HomePage() {
@@ -14,7 +15,13 @@ export default function HomePage() {
         <h1 className="font-display text-4xl sm:text-6xl text-paper mt-5 leading-[1.05] tracking-tight">
           {profile.name}
         </h1>
-        <p className="font-mono text-sm sm:text-base text-amber mt-3">{profile.title}</p>
+        <div className="flex items-center gap-3 mt-3">
+          <p className="font-mono text-sm sm:text-base text-amber">{profile.title}</p>
+          <span className="text-ink-400 font-mono text-xs">•</span>
+          <div className="font-mono text-xs text-ink-400">
+            <RealVisitCounter />
+          </div>
+        </div>
         <p className="text-ink-400 text-base sm:text-lg mt-6 max-w-2xl leading-relaxed">
           {profile.tagline}
         </p>
